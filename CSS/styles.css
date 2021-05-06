@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  text-align: center;
+  font-family: 'Montserrat', serif;
+  font-weight: bold;
+  color: #132c33;
+}
+
+h1 {
+  margin: 50px auto 0 auto;
+  font-family: 'Pacifico', cursive;
+  font-size: 4rem;
+  color: #126e82;
+  line-height: 2;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: normal;
+  margin: 50px auto auto auto;
+  color: #126e82;
+}
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  color: #51c4d3;
+}
+
+div {
+  background-color: white;
+  padding: 20px;
+}
+
+a {
+  color: #393e46;
+  font-family: 'Montserrat', serif;
+  text-decoration: none;
+
+}
+
+a:hover {
+  color: #eeeeee;
+  font-weight: bolder;
+  text-decoration:  none;
+}
+
+.topContainer {
+  background-color: #d8e3e7;
+  position: relative;
+  padding: 20px;
+}
+
+.midContainer {
+  background-color: white;
+}
+
+.bottomContainer {
+  background-color: #8BB1BF;
+  padding: 50px 0 20px;
+}
+
+.topCloud {
+  position: relative;
+  top: 5px;
+  left: 200px;
+}
+
+.bottomCloud {
+  position: absolute;
+  top: 600px;
+  left: 550px;
+}
+
+.circleborder {
+  border-radius: 100%;
+}
+
+.skill-row {
+  text-align: left;
+  width: 60%;
+  margin: 50px auto 100px auto;
+  line-height: 2;
+}
+
+.profile {
+  background-color: white;
+}
+
+.hybridcar-img {
+  width: 30%;
+  float: left;
+  margin-right: 30px;
+}
+
+.prototype-img {
+  width: 33%;
+  float: right;
+  margin-left: 30px;
+}
+
+.BUTTON_ZKT {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  color: #FFFFFF;
+    font-family: 'Montserrat', serif;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 18px;
+  background-color: #126E82;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+.BUTTON_ZKT:hover {
+  background: #1E62D0;
+  border: solid #D8E3E7 1px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.dashed {
+  border-top: 10px dotted #393e46;
+  width: 5%;
+  margin: 20px auto;
+}
+
+.copyright {
+  color: #eeeeee;
+  font-size: 0.75rem;
+  padding: 20px 0;
+}
