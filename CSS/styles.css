@@ -69,7 +69,8 @@ a:hover {
 .bottomCloud {
   position: absolute;
   top: 600px;
-  left: 550px;
+  left: auto;
+  right: auto;
 }
 
 .circleborder {
