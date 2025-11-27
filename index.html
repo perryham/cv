@@ -1,71 +1,601 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Perry Ham | Mechanical Engineer</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Pacifico&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://perryham.github.io/cv/CSS/styles.css">
-  <link rel="icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perry Ham | IO Data Governance Strategy</title>
+    <style>
+        :root {
+            /* IO / Industrial Palette */
+            --io-navy: #002040;    
+            --io-blue: #005696;    
+            --io-slate: #455a64;   
+            --bg-light: #f4f6f8;   
+            --white: #ffffff;
+            --text-main: #263238;
+            --border: #cfd8dc;
+            
+            /* Status Colors */
+            --risk: #d32f2f;
+            --success: #2e7d32;
+            
+            /* Medallion Gradients */
+            --bronze: linear-gradient(135deg, #cd7f32 0%, #b87333 50%, #8c5e2a 100%);
+            --silver: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 50%, #9e9e9e 100%);
+            --gold: linear-gradient(135deg, #ffd700 0%, #fdb931 50%, #d4af37 100%);
+            --platinum: linear-gradient(135deg, #e3f2fd 0%, #90caf9 50%, #42a5f5 100%);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--io-navy);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--io-blue);
+        }
+
+        header h1 {
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .header-sub {
+            font-size: 1.1rem;
+            color: #b0bec5;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* --- Tabs --- */
+        .tabs-wrapper {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 20px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--io-slate);
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 4px solid transparent;
+        }
+
+        .tab-btn:hover { color: var(--io-blue); background: #eceff1; }
+        .tab-btn.active { color: var(--io-navy); border-bottom: 4px solid var(--io-navy); background: #f4f6f8;}
+
+        /* --- Main Container --- */
+        .container {
+            max-width: 1300px;
+            margin: 30px auto;
+            background: var(--white);
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            min-height: 800px;
+            padding: 40px;
+        }
+
+        /* --- Transitions --- */
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Typography --- */
+        h2 { color: var(--io-navy); border-left: 5px solid var(--io-blue); padding-left: 15px; font-size: 1.8rem; margin-bottom: 25px; }
+        h3 { color: var(--io-blue); font-size: 1.3rem; margin-top: 35px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        h4 { color: var(--io-slate); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem; }
+        
+        .section-intro { margin-bottom: 20px; font-size: 1.05rem; color: #455a64; }
+
+        /* --- Tables --- */
+        .table-container { overflow-x: auto; margin-bottom: 30px; border: 1px solid var(--border); border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+        th { background: var(--io-navy); color: var(--white); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; white-space: nowrap; }
+        tr:nth-child(even) { background-color: #fcfcfc; }
+        tr:hover { background-color: #f1f8e9; }
+
+        /* --- Grid Layouts --- */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .highlight-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--io-blue);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* --- SEAL OF TRUST MEDALLIONS (CSS) --- */
+        .medallion-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .seal-wrapper {
+            flex: 1;
+            min-width: 220px;
+            max-width: 280px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 40px 20px 20px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .seal-wrapper:hover { transform: translateY(-5px); }
+
+        .medallion {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin: -85px auto 15px auto; /* Pulls it up out of the card */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            border: 4px solid #fff;
+        }
+
+        .med-bronze { background: var(--bronze); text-shadow: 1px 1px 2px #6d4c41; }
+        .med-silver { background: var(--silver); color: #424242; text-shadow: 0px 1px 1px #fff; }
+        .med-gold { background: var(--gold); color: #5d4037; text-shadow: 0px 1px 1px #fff; }
+        .med-platinum { background: var(--platinum); color: #0d47a1; text-shadow: 0px 1px 1px #fff; }
+
+        .seal-title { font-weight: bold; text-transform: uppercase; color: var(--io-navy); margin-bottom: 10px; font-size: 1.1rem; }
+        .seal-req { font-size: 0.85rem; color: #546e7a; line-height: 1.4; }
+        .seal-criteria { display: block; margin-top: 10px; font-weight: 700; color: var(--io-blue); font-size: 0.8rem; text-transform: uppercase; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--io-navy);
+            color: #cfd8dc;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .tab-btn { padding: 15px 10px; font-size: 0.8rem; }
+            .container { padding: 20px; }
+            .medallion-row { flex-direction: column; align-items: center; }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="topContainer">
-    <img class="topCloud" src="images/cloud.png" alt="cloud">
-    <h1>Hello. I'm Perry.</h1>
-    <h2>An Engineer.</h2>
-    <img class="bottomCloud" src="images/cloud.png" alt="cloud">
-    <img
-      src="https://png2.cleanpng.com/sh/7e9f9b2a324eae84c1c167c38e47a229/L0KzQYm3U8E4N5pniZH0aYP2gLBuTgBmdZN3h91uLYfofMTvTfNwephuRdVAdHXxdcT6TgB2eKFARdVqcoTyf7A0lBlvfJZ3RdVqcoTyf7A0kQVxeKoyft54YYTsfri0VfFibGY2UKoCNUa4cYW1UMU4PGg1Sqs6NUK0Q4GBUMQxPGk1UZD5bne=/kisspng-pembroke-welsh-corgi-cuteness-puppy-cartoon-winter-cartoon-puppy-floating-5aad51887565a4.0574702915213080404809.png"
-      alt="corgi" style="width: 200px;">
-  </div>
 
-  <div class="midContainer">
-    <div class="profile">
-      <img class="circleborder" src="images/perry.jpg" alt="perry">
-      <h2>Hello.</h2>
-      <p>I am a Mechanical Engineer. I am part of a Quality Control group in Toyota Canada.</P>
-      <P> I 💗 Coffee, cars 🚗, games 🎮 & coding. </p>
+    <header>
+        <h1>Implementing a Data Governance Framework at IO</h1>
+        <div class="header-sub">
+            Strategic Approach, Research Deep Dive, and Detailed Achievements
+        </div>
+    </header>
+
+    <div class="tabs-wrapper">
+        <button class="tab-btn active" onclick="openTab(event, 'tab1')">1. Interview Assignment</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab2')">2. Strategic Research & Context</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab3')">3. Achievements & Seal of Trust</button>
     </div>
-    <hr class="dashed">
-    <div class="skills">
-      <h2>My Skills.</h2>
-      <div class="skill-row">
-        <img class="hybridcar-img" src="images/hybrid-car.png" alt="cars">
-        <h3>Vehicle Development</h3>
-        <p>I have extensive experience in electrical quality engineering, including successfully launching the Corolla and RAV4 vehicles.</p>
-        <p> I have also worked on a big data analytics project, improving productivity and efficiency. </P>
-      <p>In addition, I have experience leading cross-functional teams in problem-solving activities and have a strong understanding of change management.</p>
-      <p>I have also been involved in the product development cycle and have experience managing parts suppliers.</p>
-      <p>I have a well-rounded set of skills and experience that would be valuable to any organization.</p>
-        <p>Over time, I have gained a wealth of experience collaborating with local and international working groups. </P>
-      </div>
-      <div class="skill-row">
-        <img class="prototype-img" src="images/prototype.png" alt="network">
-        <h3>Purpose based coding</h3>
-        <p>I tought myself to code in C++, SQL, M, and PowerQuery for back-end database access,</p>
-        <p>I have learned to proficiently send/receive and interpret vehicle CAN communications, and</p>
-        <p>I am self training to code Front End languages (HTML, CSS, Javascript, React).</P>
-      </div>
+
+    <div class="container">
+
+        <div id="tab1" class="tab-content active">
+            <h2>1. Strategic Approach & Framework</h2>
+            
+            <div class="highlight-box">
+                <strong>Professional Profile:</strong> Data Governance and Analytics Leader, PMP certified and actively pursuing CDMP. Expertise in improving governance maturity from <strong>Level 1.2 to 3.4</strong> in one year. Specializing in translating data strategies into measurable outcomes (cost avoidance, risk mitigation).
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <h3>Introduction & Interest</h3>
+                    <p>I am highly motivated by IO’s mission to modernize public infrastructure and its clear strategic direction to centralize governance under <strong>Strategy and Insights</strong>. IO is navigating a pivot toward becoming a data-centric enterprise, managing over $30 billion in active projects.</p>
+                    <p><strong>Strategic Alignment:</strong> IO's decision signals a commitment to closing the recognized "data maturity gap" [103, Preamble]. My experience delivering over $173K in annual automation savings aligns perfectly with IO's mandate to establish a foundation for AI and Digital Twins.</p>
+                </div>
+                <div>
+                    <h3>The Framework: Hub-and-Spoke</h3>
+                    <p>My approach is a <strong>Federated Governance Model</strong> (Data Mesh principles), balancing standardization with agility.</p>
+                    <ul style="margin-left:20px; margin-top:10px;">
+                        <li><strong>The Hub (Strategy & Insights):</strong> Sets the "Constitution"—mandatory standards, security protocols, and interoperability.</li>
+                        <li><strong>The Spokes (Business Units):</strong> Maintain Domain Ownership (e.g., Major Projects) and implement governance locally.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>The Six Core Pillars</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <h4>1. Structure & Roles</h4>
+                    <p>RACI Model: Data Owners (Accountable), Stewards (SMEs), Custodians (Tech).</p>
+                </div>
+                <div class="card">
+                    <h4>2. Policies & Compliance</h4>
+                    <p>Data Classification to balance Open Data mandates with sensitive bid data protection.</p>
+                </div>
+                <div class="card">
+                    <h4>3. Metadata & Discovery</h4>
+                    <p>Centralized Wiki/Discovery Tool for lineage and Business Glossary.</p>
+                </div>
+                <div class="card">
+                    <h4>4. Data Quality (DQA)</h4>
+                    <p>Automated metrics (Accuracy, Completeness) and formal Issue Resolution (DQIR).</p>
+                </div>
+                <div class="card">
+                    <h4>5. Seal of Trust</h4>
+                    <p>Formal badge (Bronze to Platinum) classifying data as trusted and audit-ready.</p>
+                </div>
+                <div class="card">
+                    <h4>6. Training</h4>
+                    <p>Role-based training programs and DAMA Maturity Assessments.</p>
+                </div>
+            </div>
+
+            <h3>Enabling Value (Impact Table)</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Outcome</th>
+                        <th>How Framework Delivers</th>
+                        <th>Mechanism</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Enabling Analytics</strong></td>
+                        <td>Provides certified SSOT, enabling high-quality inputs for predictive models.</td>
+                        <td>Metadata Mgmt; SSOT Designation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Improving Quality</strong></td>
+                        <td>Shifts focus from defect detection to root-cause prevention via Stewards.</td>
+                        <td>DQA (OBS-DG-014); Auto-checks</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Increasing Trust</strong></td>
+                        <td>Built through accountability (Sign-off) and transparency (Lineage).</td>
+                        <td>Seal of Trust; Audit Readiness</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>Direct Experiences & Lessons Learned</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>Key Wins</h4>
+                    <ul style="font-size: 0.9rem; margin-left: 15px;">
+                        <li><strong>OIT Replacement:</strong> Replaced insecure PHP tool with Azure/Power BI. Saved $1M vs IT proposal.</li>
+                        <li><strong>Automation:</strong> Saved 2,000+ hours/year ($173K cost avoidance) via Power Platform.</li>
+                        <li><strong>Service Improvement:</strong> Reduced CAD/AVL incident delay by 51.4%. Reduced unapproved overtime by 93%.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Lessons Learned</h4>
+                    <ul style="font-size: 0.9rem; margin-left: 15px;">
+                        <li><strong>Integrate into Workflow:</strong> Use ServiceNow for intake (OBS-DG-015) to make governance traceable.</li>
+                        <li><strong>Executive Sponsorship:</strong> Use Risk Matrices to fast-track "Deep Red" items.</li>
+                        <li><strong>Enablement > Policing:</strong> Communicate ROI. CSAT score of 94% proves value of "supportive" governance.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <h2>2. IO Strategic Research & Context Analysis</h2>
+
+            <div class="section-intro">
+                Detailed analysis of IO's strategic mandate, including the "Utilization Gap" and the technical challenges of Digital Twins and TOCs.
+            </div>
+
+            <div class="highlight-box" style="border-left-color: var(--risk);">
+                <strong>The Financial Context (The Utilization Gap):</strong>
+                The 2023–2024 Annual Report showed a revenue shortfall of <strong>$1.1 million</strong> against budget in project delivery fees. This is a direct proxy for delays in funding and execution of Digital Twin initiatives. Governance must close this gap by proving ROI.
+            </div>
+
+            <h3>I. The Five Pillars of Data Generation</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th style="width:20%">Business Line</th>
+                        <th style="width:30%">Primary Data Assets</th>
+                        <th style="width:50%">Strategic Data Challenge</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Major Projects</strong><br>($30B+ Pipeline)</td>
+                        <td>BIM Models, Risk Registers, Claims Data</td>
+                        <td><strong>Data Handover:</strong> "Valley of death" between Construction and Operations. Need ISO 19650 to prevent "dumb" PDFs.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Real Estate (GREP)</strong><br>(4,000+ Bldgs)</td>
+                        <td>Lease Abstracts, Utility Consumption</td>
+                        <td><strong>Legacy Integration:</strong> Integrating PMSP data after consolidation ($80M savings). Need 15-min interval energy data for Net Zero.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TOCs</strong><br>(Transit Communities)</td>
+                        <td>Market Absorption, Transit Specs</td>
+                        <td><strong>Structural Integration:</strong> Merging Metrolinx (Safety), Developer (Trade Secrets), and Municipal (Zoning) data.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lending</strong><br>($7.4B Loan Book)</td>
+                        <td>Credit Risk Models, Financials</td>
+                        <td><strong>Silo Breaking:</strong> Ensuring credit risk data informs provincial infrastructure planning.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Commercial</strong><br>(Broadband/AHSIP)</td>
+                        <td>Geospatial Maps, ISP Coverage</td>
+                        <td><strong>Competitive Sensitivity:</strong> Managing ISP data (Bell, Rogers) which is commercially sensitive.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>II. Digital Twin & TOC Complexity</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>BIM Standards Vacuum</h4>
+                    <p>Canada lacks national BIM standards. IO must act as the de facto regulator, issuing "Digital Records Requirements" to compel contractors to submit structured data.</p>
+                    <p>
+
+[Image of digital twin construction model]
+</p>
+                </div>
+                <div class="card">
+                    <h4>Interoperability Risk</h4>
+                    <p>The transition from Construction to Operations is critical. Governance must ensure the <strong>Asset Information Model (AIM)</strong> can be ingested into government CAFM systems.</p>
+                </div>
+            </div>
+
+            <h3>Appendix A: Data Governance RACI Matrix</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th style="width:20%">Pillar</th>
+                        <th style="width:26%">Data Owner (Accountable)</th>
+                        <th style="width:27%">Data Steward (Responsible)</th>
+                        <th style="width:27%">Data Custodian (Responsible)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Governance</strong></td>
+                        <td>Approve policies</td>
+                        <td>Apply governance locally</td>
+                        <td>Embed in architecture</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metadata</strong></td>
+                        <td>Approve standards</td>
+                        <td>Define business glossary</td>
+                        <td>Maintain lineage/tech metadata</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Quality</strong></td>
+                        <td>Ensure value/resolutions</td>
+                        <td>Define quality rules/cleansing</td>
+                        <td>Monitor via technical controls</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Access/Sharing</strong></td>
+                        <td>Approve agreements</td>
+                        <td>Coordinate sharing</td>
+                        <td>Enforce security controls</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Open Data</strong></td>
+                        <td>Oversee publication</td>
+                        <td>Prepare datasets/metadata</td>
+                        <td>Extract using tech tools</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>Appendix B: Key Standards (OBS-DG Series)</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Doc #</th>
+                        <th>Subject</th>
+                        <th>Key Function</th>
+                    </tr>
+                    <tr>
+                        <td><strong>OBS-DG-001</strong></td>
+                        <td>SME Engagement</td>
+                        <td>Procedure for engaging SMEs and acquiring raw data.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OBS-DG-002</strong></td>
+                        <td>Metadata Mgmt</td>
+                        <td>Guidelines for centralized metadata repository.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OBS-DG-008</strong></td>
+                        <td>Issue Resolution</td>
+                        <td>Structured process for logging and resolving issues.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OBS-DG-011</strong></td>
+                        <td>Seal of Trust</td>
+                        <td>Process for evaluating Bronze/Silver/Gold/Platinum status.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OBS-DG-013</strong></td>
+                        <td>DG Auditing</td>
+                        <td>Systematic evidence-based compliance review.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OBS-DG-014</strong></td>
+                        <td>DQA Standard</td>
+                        <td>Standardized approach for DQ metrics (Accuracy, Validity).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OBS-DG-015</strong></td>
+                        <td>Issue Mgmt System</td>
+                        <td>Mandates ServiceNow as entry point (Intake Template).</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <h2>3. Achievements & Seal of Trust</h2>
+
+            <h3>I. Maturity & Infrastructure Metrics</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <div style="font-size:2rem; color:var(--io-blue); font-weight:bold;">1.2 &#8594; 3.4</div>
+                    <div style="font-weight:bold; color:var(--io-slate);">DAMA Maturity Uplift</div>
+                    <p>Achieved within one year (2024-2025).</p>
+                </div>
+                <div class="card">
+                    <div style="font-size:2rem; color:var(--io-blue); font-weight:bold;">25,039</div>
+                    <div style="font-weight:bold; color:var(--io-slate);">Hub Site Visits</div>
+                    <p>Engaged 249 unique users in 5 months.</p>
+                </div>
+                <div class="card">
+                    <div style="font-size:2rem; color:var(--io-blue); font-weight:bold;">100%</div>
+                    <div style="font-weight:bold; color:var(--io-slate);">Audit Resolution</div>
+                    <p>Resolved all metadata gaps in MySafety audit.</p>
+                </div>
+            </div>
+
+            <h3>II. Deep Dive: The Seal of Trust (OBS-DG-011)</h3>
+            <div class="section-intro" style="text-align: center;">
+                The Seal of Trust is the organization’s formal classification badge. It signals data is trusted, governed, and audit-ready.
+            </div>
+
+            <div class="medallion-row">
+                <div class="seal-wrapper" style="border-bottom: 5px solid #a97142;">
+                    <div class="medallion med-bronze">B</div>
+                    <div class="seal-title">Bronze</div>
+                    <div class="seal-req">Completed EDG Artifacts. Defined roles, access guidelines, and ownership.</div>
+                </div>
+
+                <div class="seal-wrapper" style="border-bottom: 5px solid #9ea7ad;">
+                    <div class="medallion med-silver">S</div>
+                    <div class="seal-title">Silver</div>
+                    <div class="seal-req">Bronze + Signed Data Standard. Requires senior leadership endorsement.</div>
+                </div>
+
+                <div class="seal-wrapper" style="border-bottom: 5px solid #fbc02d;">
+                    <div class="medallion med-gold">G</div>
+                    <div class="seal-title">Gold</div>
+                    <div class="seal-req">Silver + Active DQA Strategy. Rolling quality scores and audit compliance.</div>
+                    <div class="seal-criteria">First Adoption: Sept 2025</div>
+                </div>
+
+                <div class="seal-wrapper" style="border-bottom: 5px solid #546e7a;">
+                    <div class="medallion med-platinum">P</div>
+                    <div class="seal-title">Platinum</div>
+                    <div class="seal-req">Gold + Continuous Improvement. Full audit readiness and operational ownership.</div>
+                </div>
+            </div>
+
+            <h3>III. Quantifiable Results & Risk Mitigation</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Project</th>
+                        <th>Governance Solution</th>
+                        <th>Measurable Impact</th>
+                    </tr>
+                    <tr>
+                        <td><strong>OIT Replacement</strong></td>
+                        <td>Rebuilt using Azure/Power BI. Eliminated direct SQL risks.</td>
+                        <td><span style="color:green; font-weight:bold;">$1 Million Savings</span> vs IT proposal.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>POA Intake Auto</strong></td>
+                        <td>Power Apps/SharePoint workflow.</td>
+                        <td>Eliminated 1,100 hours. <span style="color:green; font-weight:bold;">$92,820 Cost Avoidance.</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RTC PMP Auto</strong></td>
+                        <td>Automated scoring logic via Power BI.</td>
+                        <td>Reduced disputes by 95%. Saved 1,360 hours.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RTSI DQA</strong></td>
+                        <td>Automated DQA checks on 19 operational tables.</td>
+                        <td>Achieved <span style="color:green; font-weight:bold;">100% Compliance</span> in Jan 2025.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CAD/AVL Incident</strong></td>
+                        <td>Streamlined ServiceNow routing.</td>
+                        <td>Reduced Avg Delay by 51.4% (to 1.7 hrs).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unapproved Overtime</strong></td>
+                        <td>Mandatory review and attestation.</td>
+                        <td>Reduced unapproved overtime by <span style="color:green; font-weight:bold;">93%</span>.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
     </div>
-    <hr class="dashed">
-    <div class="contact-me">
-      <h2>Get In Touch</h2>
-      <h3>If you love coffee as much as I do.</h3>
-      <p>Love coffee as much as I do? Let's talk about how awesome they are! We can work on cars, code and drink coffee!</p>
-      <p>.</p>
-      <a class="BUTTON_ZKT" href="mailto:perryham@gmail.com">CONTACT ME</a>
-    </div>
-  </div>
 
+    <footer>
+        <p><strong>Perry Ham</strong> | Data Governance & Analytics Leader</p>
+        <p>Prepared for Infrastructure Ontario Leadership</p>
+    </footer>
 
-  <div class="bottomContainer">
-    <a class="footer-link" href="https://ca.linkedin.com/in/perry-ham-47015b16">LinkedIn</a>
-
-    <p class="copyright">© 2022 Perry Ham.</p>
-  </div>
+    <script>
+        function openTab(event, tabName) {
+            // Hide all tabs
+            var i, tabContent, tabBtns;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            
+            // Deactivate buttons
+            tabBtns = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+            
+            // Show current tab and activate button
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
 
 </body>
-
 </html>
