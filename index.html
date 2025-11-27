@@ -36,6 +36,14 @@
             font-size: 15px;
         }
 
+        /* --- Link Styling --- */
+        a { text-decoration: none; color: var(--io-blue); font-weight: bold; transition: color 0.2s; }
+        a:hover { text-decoration: underline; color: var(--io-navy); }
+        
+        /* Links inside dark headers need to be white */
+        th a { color: var(--white); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+        th a:hover { color: #bbdefb; }
+
         /* --- Header --- */
         header {
             background: var(--io-navy);
@@ -233,7 +241,7 @@
                 <div>
                     <h3>Introduction & Interest</h3>
                     <p>I am highly motivated by IO’s mission to modernize public infrastructure and its clear strategic direction to centralize governance under <strong>Strategy and Insights</strong>. IO is navigating a pivot toward becoming a data-centric enterprise, managing over $30 billion in active projects.</p>
-                    <p><strong>Strategic Alignment:</strong> IO's decision signals a commitment to closing the recognized "data maturity gap" [103, Preamble]. My experience delivering over $173K in annual automation savings aligns perfectly with IO's mandate to establish a foundation for AI and Digital Twins.</p>
+                    <p><strong>Strategic Alignment:</strong> IO's decision signals a commitment to closing the recognized "data maturity gap". My experience delivering over $173K in annual automation savings aligns perfectly with IO's mandate to establish a foundation for AI and Digital Twins.</p>
                 </div>
                 <div>
                     <h3>The Framework: Hub-and-Spoke</h3>
@@ -389,9 +397,9 @@
                 <table>
                     <tr>
                         <th style="width:20%">Pillar</th>
-                        <th style="width:26%">Data Owner (Accountable)</th>
-                        <th style="width:27%">Data Steward (Responsible)</th>
-                        <th style="width:27%">Data Custodian (Responsible)</th>
+                        <th style="width:26%"><a href="https://drive.google.com/file/d/1Y_1-MIg5yZcV0TFNir14t6C4YAObjhFw/view?usp=drive_link" target="_blank">Data Owner (Accountable)</a></th>
+                        <th style="width:27%"><a href="https://drive.google.com/file/d/16s6mZ_OYvZD3SQly7dFMpG6rjFu1ozlO/view?usp=drive_link" target="_blank">Data Steward (Responsible)</a></th>
+                        <th style="width:27%"><a href="https://drive.google.com/file/d/1REE_wg0y3L_ZvwIqXVj4lV3kN3p4F_LS/view?usp=drive_link" target="_blank">Data Custodian (Responsible)</a></th>
                     </tr>
                     <tr>
                         <td><strong>Governance</strong></td>
@@ -435,37 +443,42 @@
                         <th>Key Function</th>
                     </tr>
                     <tr>
-                        <td><strong>OBS-DG-001</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1FFnEd9P9h_jQpd_nvhFBM084trc81KYp/view?usp=drive_link" target="_blank">OBS-DG-001</a></strong></td>
                         <td>SME Engagement</td>
                         <td>Procedure for engaging SMEs and acquiring raw data.</td>
                     </tr>
                     <tr>
-                        <td><strong>OBS-DG-002</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1CeFnC8ajXOFgZRx7FVwWBAZy-WW-Qcyw/view?usp=drive_link" target="_blank">OBS-DG-002</a></strong></td>
                         <td>Metadata Mgmt</td>
                         <td>Guidelines for centralized metadata repository.</td>
                     </tr>
                     <tr>
-                        <td><strong>OBS-DG-008</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1pX0v3QG1DPXMXgDTqjv92Qrpto7pBE5K/view?usp=drive_link" target="_blank">OBS-DG-006</a></strong></td>
+                        <td>Milestones</td>
+                        <td>Define minimum requirement for Data Governance work and artifacts.</td>
+                    </tr>
+                    <tr>
+                        <td><strong><a href="https://drive.google.com/file/d/170ZMo2pNrD06GNUfw-01n5o8y4EdV6Jj/view?usp=drive_link" target="_blank">OBS-DG-008</a></strong></td>
                         <td>Issue Resolution</td>
                         <td>Structured process for logging and resolving issues.</td>
                     </tr>
                     <tr>
-                        <td><strong>OBS-DG-011</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1mQZy76bk6vaYGZH_01ujezwgqrts-Ebg/view?usp=drive_link" target="_blank">OBS-DG-011</a></strong></td>
                         <td>Seal of Trust</td>
                         <td>Process for evaluating Bronze/Silver/Gold/Platinum status.</td>
                     </tr>
                     <tr>
-                        <td><strong>OBS-DG-013</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1-qpb8JbyP57cHmo8Cwf5k6J5qIW51tnk/view?usp=drive_link" target="_blank">OBS-DG-013</a></strong></td>
                         <td>DG Auditing</td>
                         <td>Systematic evidence-based compliance review.</td>
                     </tr>
                     <tr>
-                        <td><strong>OBS-DG-014</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1AEBHpAexTs72pFGIAi4Tk-lWMdzgO-eU/view?usp=drive_link" target="_blank">OBS-DG-014</a></strong></td>
                         <td>DQA Standard</td>
                         <td>Standardized approach for DQ metrics (Accuracy, Validity).</td>
                     </tr>
                     <tr>
-                        <td><strong>OBS-DG-015</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1jDrvBGbUe1gVtfdQzAUfMkrmQwVXJV2o/view?usp=drive_link" target="_blank">OBS-DG-015</a></strong></td>
                         <td>Issue Mgmt System</td>
                         <td>Mandates ServiceNow as entry point (Intake Template).</td>
                     </tr>
@@ -536,17 +549,17 @@
                         <th>Measurable Impact</th>
                     </tr>
                     <tr>
-                        <td><strong>OIT Replacement</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1OcKBysn85491UFJ-NZaosFzJi3lDMB4A/view?usp=drive_link" target="_blank">OIT Replacement</a></strong></td>
                         <td>Rebuilt using Azure/Power BI. Eliminated direct SQL risks.</td>
                         <td><span style="color:green; font-weight:bold;">$1 Million Savings</span> vs IT proposal.</td>
                     </tr>
                     <tr>
-                        <td><strong>POA Intake Auto</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/19gOAhoCFsMr77A2_oXcMdffsZWDLYrrx/view?usp=drive_link" target="_blank">POA Intake Auto</a></strong></td>
                         <td>Power Apps/SharePoint workflow.</td>
                         <td>Eliminated 1,100 hours. <span style="color:green; font-weight:bold;">$92,820 Cost Avoidance.</span></td>
                     </tr>
                     <tr>
-                        <td><strong>RTC PMP Auto</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1cVj05u6tnu2qxGyyhbxvZu92swkwosMQ/view?usp=drive_link" target="_blank">RTC PMP Auto</a></strong></td>
                         <td>Automated scoring logic via Power BI.</td>
                         <td>Reduced disputes by 95%. Saved 1,360 hours.</td>
                     </tr>
@@ -556,12 +569,12 @@
                         <td>Achieved <span style="color:green; font-weight:bold;">100% Compliance</span> in Jan 2025.</td>
                     </tr>
                     <tr>
-                        <td><strong>CAD/AVL Incident</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1Za8648L92VZOsLtAe7oRK8wa_orbB7Yq/view?usp=drive_link" target="_blank">CAD/AVL Incident</a></strong></td>
                         <td>Streamlined ServiceNow routing.</td>
                         <td>Reduced Avg Delay by 51.4% (to 1.7 hrs).</td>
                     </tr>
                     <tr>
-                        <td><strong>Unapproved Overtime</strong></td>
+                        <td><strong><a href="https://drive.google.com/file/d/1yj98mtCx1eS3HACkHbym4jwmSyjZwO7c/view?usp=drive_link" target="_blank">Unapproved Overtime</a></strong></td>
                         <td>Mandatory review and attestation.</td>
                         <td>Reduced unapproved overtime by <span style="color:green; font-weight:bold;">93%</span>.</td>
                     </tr>
